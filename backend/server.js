@@ -15,8 +15,10 @@ const connect = async () => {
     console.log(error);
   }
 };
-
 connect();
+
+//routes
+require("./app/routes/index").default(app);
 
 //starting server
 const port = process.env.PORT || 3001;
