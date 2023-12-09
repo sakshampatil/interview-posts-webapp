@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from "react";
 import { Card, CardHeader, CardBody, CardFooter, Input, Button } from "@nextui-org/react";
 import Link from "next/link";
 import { useLoginMutation } from "@/store/services/authApi";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/store/hooks";
 import { setUser } from "@/store/features/authSice";
 import { useRouter } from "next/router";
 
@@ -11,7 +11,7 @@ const Login = () => {
     useLoginMutation();
 
   const router = useRouter();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [username, setUserName] = useState("");
   const [usernameError, setUserNameError] = useState("");
