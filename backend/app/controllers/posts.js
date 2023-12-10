@@ -7,7 +7,7 @@ exports.createPost = async (req, res, next) => {
     let body = req.body;
 
     //checking the incoming data
-    if (!body.content || !body.authorId) {
+    if (!body.content || !body.authorName) {
       throw new errorHandler.BadRequest("Insufficient Data");
     }
 

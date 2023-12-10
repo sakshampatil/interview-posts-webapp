@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { PersistGate } from "redux-persist/integration/react";
 import ProtectedRoutes from "@/components/ProtectedRoutes";
+import Navbar from "@/components/Navbar";
 
 export default function App({ Component, pageProps }) {
   return (

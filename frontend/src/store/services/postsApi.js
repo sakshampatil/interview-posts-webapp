@@ -18,7 +18,19 @@ export const postsApi = createApi({
         url: `posts/listPosts?search=${search}`,
       }),
     }),
+    createPost: builder.mutation({
+      query: (body) => ({
+        url: `posts/createPost`,
+        method: "POST",
+        body: body,
+      }),
+    }),
+    getPostById: builder.query({
+      query: (id) => ({
+        url: `posts/getPostById/${id}`,
+      }),
+    }),
   }),
 });
 
-export const { useListPostsQuery } = postsApi;
+export const { useListPostsQuery, useCreatePostMutation, useGetPostByIdQuery } = postsApi;
