@@ -31,7 +31,7 @@ exports.signup = async (req, res, next) => {
     //creating user
     const user = await userModel.create(body);
 
-    responseHandler({ username: user.username }, res);
+    responseHandler({ username: user.username, userId: user._id }, res);
   } catch (error) {
     next(error);
   }
