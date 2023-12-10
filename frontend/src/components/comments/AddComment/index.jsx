@@ -29,6 +29,7 @@ const AddComment = ({ postId }) => {
     };
     createComment(body);
     setContent("");
+    window.location.reload();
   };
 
   return (

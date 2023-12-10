@@ -25,7 +25,13 @@ export const commentsApi = createApi({
         body: body,
       }),
     }),
+    getAllCommentsForPost: builder.query({
+      query: (id) => ({
+        url: `comments/getAllCommentsForPost/${id}`,
+      }),
+    }),
   }),
 });
 
-export const { useListCommentsQuery, useCreateCommentMutation } = commentsApi;
+export const { useListCommentsQuery, useCreateCommentMutation, useGetAllCommentsForPostQuery } =
+  commentsApi;
