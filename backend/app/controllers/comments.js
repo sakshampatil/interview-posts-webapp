@@ -46,3 +46,17 @@ exports.listComments = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.getAllCommentsForPost = async (req, res, next) => {
+  try {
+    let postId = req.params.id;
+
+    if (!postId) {
+      throw new errorHandler.BadRequest();
+    }
+
+    const comments = await commentsModel.find({ postId: postId });
+
+    responseHandler(comments, res);
+  } catch (error) {}
+};

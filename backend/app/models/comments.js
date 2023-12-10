@@ -17,4 +17,6 @@ const commentsSchema = new mongoose.Schema({
   },
 });
 
+commentsSchema.index({ postId: 1 });
+
 module.exports = mongoose.model("comments", commentsSchema);
