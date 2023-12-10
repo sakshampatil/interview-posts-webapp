@@ -8,7 +8,7 @@ import Comment from "@/components/comments/Comment";
 
 export default function Page() {
   const router = useRouter();
-  const { data, isLoading } = useGetAllCommentsForPostQuery(router.query.id);
+  const { data, isLoading, refetch } = useGetAllCommentsForPostQuery(router.query.id);
 
   console.log("POS = ", router.query.id);
   return (
@@ -16,7 +16,7 @@ export default function Page() {
       <Navbar />
       <h2 className="flex justify-center text-2xl mt-1">Post</h2>
       {router.query.id && <ViewPost postId={router.query.id} />}
-      <AddComment postId={router.query.id} />
+      <AddComment postId={router.query.id} refetch={refetch} />
       <h2 className="flex justify-center text-2xl">Comments</h2>
       <div>{data && data.data.map((ele) => <Comment key={ele._id} comment={ele} />)}</div>
     </Fragment>

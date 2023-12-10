@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAppSelector } from "@/store/hooks";
 import { useCreateCommentMutation } from "@/store/services/commentsApi";
 
 import { Card, CardHeader, CardBody, CardFooter, Textarea, Button } from "@nextui-org/react";
 
-const AddComment = ({ postId }) => {
+const AddComment = ({ postId, refetch }) => {
   const [createComment, { isSuccess }] = useCreateCommentMutation();
   const [content, setContent] = useState("");
   const [contentError, setContentError] = useState("");
 
   const commentorName = useAppSelector((state) => state.auth.user.userName);
+
+  useEffect(() => {
+    if (isSuccess) {
+      refetch();
+    }
+  }, [isSuccess]);
 
   const handleContentChange = (e) => {
     setContentError("");
@@ -29,7 +35,6 @@ const AddComment = ({ postId }) => {
     };
     createComment(body);
     setContent("");
-    window.location.reload();
   };
 
   return (

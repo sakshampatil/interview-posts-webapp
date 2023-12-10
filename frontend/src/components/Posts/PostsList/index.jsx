@@ -4,7 +4,9 @@ import Post from "../Post";
 import NoPosts from "../NoPosts";
 
 const PostsList = ({ search }) => {
-  const { data: posts, isLoading } = useListPostsQuery(search);
+  const { data: posts, isLoading } = useListPostsQuery(search, {
+    refetchOnMountOrArgChange: true,
+  });
 
   return (
     <Fragment>
