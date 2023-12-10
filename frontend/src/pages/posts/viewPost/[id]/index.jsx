@@ -12,7 +12,7 @@ export default function Page() {
     <Fragment>
       <Navbar />
       {router.query.id && <ViewPost postId={router.query.id} />}
-      <AddComment />
+      <AddComment postId={router.query.id} />
     </Fragment>
   );
 }

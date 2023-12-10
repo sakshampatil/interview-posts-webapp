@@ -11,6 +11,11 @@ exports.createPost = async (req, res, next) => {
       throw new errorHandler.BadRequest("Insufficient Data");
     }
 
+    const user = await userModel.findOne({ username: body.authorName });
+
+    if (!user) {
+      throw new errorHandler.BadRequest("Invalid data");
+    }
     //creating post
     const post = await postsModel.create(body);
 

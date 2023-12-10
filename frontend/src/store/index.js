@@ -20,11 +20,13 @@ const persistConfig = {
 
 import { authApi } from "./services/authApi";
 import { postsApi } from "./services/postsApi";
+import { commentsApi } from "./services/commentsApi";
 
 const rootReducer = combineReducers({
   auth: authReducer,
   [authApi.reducerPath]: authApi.reducer,
   [postsApi.reducerPath]: postsApi.reducer,
+  [commentsApi.reducerPath]: commentsApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -36,7 +38,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat([authApi.middleware, postsApi.middleware]),
+    }).concat([authApi.middleware, postsApi.middleware, commentsApi.middleware]),
 });
 
 export const persistedStore = persistStore(store);

@@ -6,15 +6,27 @@ import { GoDotFill, GoSearch } from "react-icons/go";
 import { logout } from "@/store/features/authSice";
 import { useRouter } from "next/router";
 
-const Navbar = ({ onChangeSearch, searchVal }) => {
+const Navbar = ({ onChangeSearch, searchVal, onChangeDropdown }) => {
   const userName = useAppSelector((state) => state?.auth?.user?.userName);
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const [value, setValue] = useState(new Set(["Posts"]));
+  const [value, setValue] = useState("Posts");
 
   const handleSearchChange = (e) => {
     onChangeSearch(e.target.value);
+  };
+
+  const handleDropdownChange = (val) => {
+    console.log("VAL = ", val.target.value);
+    if (val.target.value) {
+      setValue(val.target.value);
+      let res = false;
+      if (val.target.value === "Comments") {
+        res = true;
+      }
+      onChangeDropdown(res);
+    }
   };
 
   const onLogout = () => {
@@ -55,8 +67,8 @@ const Navbar = ({ onChangeSearch, searchVal }) => {
                 },
               }}
               size="sm"
-              selectedKeys={value}
-              onSelectionChange={setValue}
+              selectedKeys={[value]}
+              onChange={handleDropdownChange}
             >
               <SelectItem className="dark" key={"Posts"} value={"Posts"}>
                 {"Posts"}
