@@ -20,7 +20,7 @@ const CreatePost = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      router.back();
+      router.replace("/");
     }
   }, [isSuccess]);
 

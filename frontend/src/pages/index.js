@@ -8,10 +8,6 @@ export default function Home() {
   const [isComments, setIsComments] = useState(false);
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    console.log("isComm = ", isComments);
-  }, [isComments]);
-
   const onChangeDropdown = (val) => {
     setIsComments(val);
   };
@@ -20,6 +16,7 @@ export default function Home() {
     <Fragment>
       <Navbar onChangeSearch={setSearch} onChangeDropdown={onChangeDropdown} searchVal={search} />
       <div className="my-6">
+        <h2 className="flex justify-center text-2xl">{isComments ? "Comments" : "Posts"}</h2>
         {isComments ? <CommentsList search={search} /> : <PostsList search={search} />}
       </div>
     </Fragment>

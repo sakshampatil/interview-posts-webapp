@@ -14,8 +14,10 @@ export default function Page() {
   return (
     <Fragment>
       <Navbar />
+      <h2 className="flex justify-center text-2xl mt-1">Post</h2>
       {router.query.id && <ViewPost postId={router.query.id} />}
       <AddComment postId={router.query.id} />
+      <h2 className="flex justify-center text-2xl">Comments</h2>
       <div>{data && data.data.map((ele) => <Comment key={ele._id} comment={ele} />)}</div>
     </Fragment>
   );

@@ -1,4 +1,5 @@
 const postsModel = require("../models/posts");
+const userModel = require("../models/user");
 const { responseHandler } = require("../utils/responseHandler");
 const errorHandler = require("../utils/errorHandler");
 
