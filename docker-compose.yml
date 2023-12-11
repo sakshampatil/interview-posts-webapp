@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  frontend:
+    build: ./frontend
+    environment:
+      - NEXT_PUBLIC_BASE_URL="http://localhost:3001/api/v1"
+    container_name: nextjs-ui
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    depends_on:
+      - backend
+    networks:
+      - mern-network
+
+  backend:
+    build: ./backend
+    environment:
+      - SECRET_KEY=KennectInterviewTask@123
+      - PORT=3001
+      - MONGO_CONNECT=mongodb://mongo-db:27017/interview-posts-webapp
+    container_name: node-api
+    restart: always
+    ports:
+      - "3001:3001"
+    depends_on:
+      - database
+    networks:
+      - mern-network
+
+  database:
+    image: mongo
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    networks:
+      - mern-network
+
+networks:
+  mern-network:
+    driver: bridge

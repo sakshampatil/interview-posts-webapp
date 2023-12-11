@@ -7,9 +7,7 @@ const CommentsList = ({ search }) => {
 
   return (
     <Fragment>
-      {comments?.data.map((ele) => (
-        <Comment key={ele._id} comment={ele} />
-      ))}
+      {comments && comments?.data.map((ele) => <Comment key={ele._id} comment={ele} />)}
     </Fragment>
   );
 };

@@ -18,9 +18,9 @@ const SignUp = () => {
 
   useEffect(() => {
     if (isError) {
-      error.data.message.toLowerCase().includes("password")
-        ? setPasswordError(error.data.message)
-        : setUserNameError(error.data.message);
+      error?.data?.message.toLowerCase().includes("password")
+        ? setPasswordError(error?.data?.message)
+        : setUserNameError(error?.data?.message);
     }
   }, [error, isError]);
 

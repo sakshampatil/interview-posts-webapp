@@ -18,7 +18,6 @@ const Navbar = ({ onChangeSearch, searchVal, onChangeDropdown }) => {
   };
 
   const handleDropdownChange = (val) => {
-    console.log("VAL = ", val.target.value);
     if (val.target.value) {
       setValue(val.target.value);
       let res = false;

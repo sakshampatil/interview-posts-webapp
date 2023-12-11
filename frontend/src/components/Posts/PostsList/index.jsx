@@ -10,7 +10,7 @@ const PostsList = ({ search }) => {
 
   return (
     <Fragment>
-      {posts && posts.data.length > 0 ? (
+      {posts && posts?.data.length > 0 ? (
         posts?.data.map((ele) => <Post key={ele._id} post={ele} />)
       ) : (
         <NoPosts />
