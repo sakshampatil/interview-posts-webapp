@@ -11,7 +11,7 @@ const Post = ({ post }) => {
         <CardHeader className="text-blue-600 ">
           <div>{post.authorName}</div>
         </CardHeader>
-        <CardBody className="bg-custom-black mx-3 w-auto rounded-md my-2">
+        <CardBody className="bg-custom-black w-full mr-3  rounded-md my-2 ">
           <p>{post.content}</p>
         </CardBody>
       </Card>
